@@ -6,7 +6,7 @@ use App\Http\Controllers\BaseController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/bases/index');
 });
 
 Route::get('/dashboard', function () {

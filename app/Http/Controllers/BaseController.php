@@ -22,6 +22,7 @@ class BaseController extends Controller
     // spreekt voor zich, create functie
     public function create()
     {
+        $this->authorize('create', Base::class);
         return view('bases.create');
     }
 
@@ -29,6 +30,8 @@ class BaseController extends Controller
     // en stored ze in de DB. stuurt een return terug om te zegeen dat de bases succesvol is aangemaakt.
     public function store(Request $request)
     {
+        $this->authorize('create', Base::class);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'image_url' => 'required|url',
@@ -53,12 +56,15 @@ class BaseController extends Controller
     // deze methode returned de edit view waar login gebruikers een basis kunnen updaten
     public function edit(Base $base)
     {
+        $this->authorize('update', $base);
         return view('bases.edit', compact('base'));
     }
 
     // deze functie zorgt ervoor dat de data van de edit pagina in de DB komt. 
     public function update(Request $request, Base $base)
     {
+        $this->authorize('update', $base);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'image_url' => 'required|url',
@@ -78,6 +84,7 @@ class BaseController extends Controller
     // deze functie vernietigd de basis 
     public function destroy(Base $base)
     {
+        $this->authorize('delete', $base);
         $base->delete();
 
         return redirect()->route('bases.index')->with('success', 'Base deleted successfully.');

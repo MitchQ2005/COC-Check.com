@@ -28,5 +28,10 @@
                 </li>
             @endforeach
         </ul>
+        @guest
+            <div class="mt-4">
+                <a href="{{ route('login') }}" class="btn btn-primary">Log in</a>
+            </div>
+        @endguest
     </div>
 @endsection

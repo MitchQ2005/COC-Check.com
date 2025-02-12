@@ -24,7 +24,8 @@ class BaseController extends Controller
     public function create()
     {
         $this->authorize('create', Base::class);
-        return view('bases.create');
+        $townHalls = TownHall::all();
+        return view('bases.auth.create', compact('townHalls'));
     }
 
     // store functie, krijgt de $request mee om ervoor te zorgen dat alle velden goed zijn ingevuld

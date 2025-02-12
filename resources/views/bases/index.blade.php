@@ -15,6 +15,9 @@
             @foreach ($bases as $base)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a href="{{ route('bases.show', $base->id) }}">{{ $base->name }}</a>
+                    <a href="{{ route('bases.show', $base->id) }}">{{ $base->image_url }}</a>
+                    <a href="{{ route('bases.show', $base->id) }}">{{ $base->description }}</a>
+
                     @auth
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="{{ route('bases.edit', $base->id) }}" class="btn btn-secondary btn-sm">Edit</a>
@@ -31,6 +34,10 @@
         @guest
             <div class="mt-4">
                 <a href="{{ route('login') }}" class="btn btn-primary">Log in</a>
+
+                @auth
+                <a href="{{ route('create') }}" class="btn btn-primary">create</a>
+                @endauth
             </div>
         @endguest
     </div>

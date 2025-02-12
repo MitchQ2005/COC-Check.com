@@ -9,12 +9,11 @@ class TownHallSeeder extends Seeder
 {
     public function run()
     {
-        TownHall::create([
-            'level' => 1,
-        ]);
-
-        TownHall::create([
-            'level' => 2,
-        ]);
+        // Create entries for Town Hall levels 1 to 17
+        for ($level = 1; $level <= 17; $level++) {
+            TownHall::create([
+                'level' => $level,
+            ]);
+        }
     }
 }

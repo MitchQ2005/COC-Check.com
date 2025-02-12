@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Base;
+use App\Models\TownHall;
 use Illuminate\Http\Request;
 
 class BaseController extends Controller
@@ -42,6 +43,20 @@ class BaseController extends Controller
             'town_hall_id' => 'required|exists:town_halls,id',
         ]);
 
+        // Custom validation to ensure the layout_link corresponds to the correct townhall level
+        $townHall = TownHall::find($request->town_hall_id);
+        if (!$townHall) {
+            return redirect()->back()->withErrors(['town_hall_id' => 'Invalid townhall level.']);
+        }
+
+        // Extract the Town Hall level from the layout_link
+        preg_match('/TH(\d+)/', $request->layout_link, $matches);
+        $extractedTownHallLevel = isset($matches[1]) ? (int)$matches[1] : null;
+
+        if ($extractedTownHallLevel !== $townHall->level) {
+            return redirect()->back()->withErrors(['layout_link' => 'The layout link does not match the selected Town Hall level.']);
+        }
+
         Base::create($request->all());
 
         return redirect()->route('bases.index')->with('success', 'Base created successfully.');
@@ -75,11 +90,24 @@ class BaseController extends Controller
             'town_hall_id' => 'required|exists:town_halls,id',
         ]);
 
+        // Custom validation to ensure the layout_link corresponds to the correct townhall level
+        $townHall = TownHall::find($request->town_hall_id);
+        if (!$townHall) {
+            return redirect()->back()->withErrors(['town_hall_id' => 'Invalid townhall level.']);
+        }
+
+        // Extract the Town Hall level from the layout_link
+        preg_match('/TH(\d+)/', $request->layout_link, $matches);
+        $extractedTownHallLevel = isset($matches[1]) ? (int)$matches[1] : null;
+
+        if ($extractedTownHallLevel !== $townHall->level) {
+            return redirect()->back()->withErrors(['layout_link' => 'The layout link does not match the selected Town Hall level.']);
+        }
+
         $base->update($request->all());
 
         return redirect()->route('bases.index')->with('success', 'Base updated successfully.');
     }
-
 
     // deze functie vernietigd de basis 
     public function destroy(Base $base)

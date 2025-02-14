@@ -8,14 +8,24 @@
         </div>
         <div class="flex items-center space-x-6">
             <nav>
-                <ul class="flex space-x-6">
-                    <li class="mx-6 px-6"><a href="{{ route('home') }}" class="text-gray-900 hover:text-gray-700">Home</a></li>
-                    <li class="mx-6 px-6"><a href="{{ route('bases') }}" class="text-gray-900 hover:text-gray-700">Bases</a></li>
-                    <li class="mx-6 px-6"><a href="{{ route('search') }}" class="text-gray-900 hover:text-gray-700">Search</a></li>
-                    <li class="mx-6 px-6"><a href="{{ route('contact') }}" class="text-gray-900 hover:text-gray-700">Contact</a></li>
+                <ul class="flex space-x-8">
+                    <li class="bg-orange-500 rounded-lg border border-white">
+                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Home</a>
+                    </li>
+                    <li class="bg-orange-500 rounded-lg border border-white">
+                        <a href="{{ route('bases') }}" class="text-white px-4 py-2 block">Bases</a>
+                    </li>
+                    <li class="bg-orange-500 rounded-lg border border-white">
+                        <a href="{{ route('search') }}" class="text-white px-4 py-2 block">Search</a>
+                    </li>
+                    <li class="bg-orange-500 rounded-lg border border-white">
+                        <a href="{{ route('contact') }}" class="text-white px-4 py-2 block">Contact</a>
+                    </li>
+                    <li class="bg-[#DB5A42] rounded-lg border border-white">
+                        <a href="{{ route('login') }}" class="text-white px-4 py-2 block">Login</a>
+                    </li>
                 </ul>
             </nav>
-            <a href="{{ route('login') }}" class="text-gray-900 hover:text-gray-700">Login</a>
         </div>
     </div>
 </header>

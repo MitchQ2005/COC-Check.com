@@ -1,0 +1,103 @@
+body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ background-color: #f9f9f9;
+}
+
+.contact-page {
+ padding: 20px;
+}
+
+.contact-container {
+ display: flex;
+ max-width: 1200px;
+ margin: auto;
+ background: white;
+ border-radius: 10px;
+ overflow: hidden;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+ flex: 1;
+ background-color: #d9a76a;
+ color: #000;
+ padding: 50px 40px; /* Meer padding rondom de tekst */
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+
+.contact-info h2 {
+ margin-top: 0;
+ font-size: 32px; /* Grotere tekst voor visueel evenwicht */
+ margin-bottom: 20px; /* Meer ruimte onder de titel */
+}
+
+.contact-info p {
+ margin: 0px 0 25px; /* Extra ruimte tussen tekstblokken */
+ line-height: 1.8; /* Betere leesbaarheid */
+}
+
+.contact-info h3 {
+ margin-top: 30px;
+ font-size: 20px;
+ font-weight: bold;
+ margin-bottom: 15px !important;
+}
+
+.contact-form {
+ flex: 2;
+ padding: 50px; /* Ruimere padding rondom het formulier */
+}
+
+.contact-form form {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 30px; /* Meer ruimte tussen de velden */
+}
+
+.form-group {
+ flex: 1 1 calc(50% - 30px); /* Gelijke breedte, met ruimte */
+ display: flex;
+ flex-direction: column;
+}
+
+.full-width {
+ flex: 100%;
+}
+
+label {
+ margin-bottom: 10px;
+ font-weight: bold;
+ color: #333;
+}
+
+input, textarea {
+ padding: 15px; /* Grotere padding voor comfortabel typen */
+ font-size: 16px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ outline: none;
+ /* width: 100%; */
+}
+
+textarea {
+ resize: none;
+}
+
+button {
+ background-color: #d9a76a;
+ color: white;
+ border: none;
+ padding: 15px 20px;
+ border-radius: 5px;
+ cursor: pointer;
+ font-size: 16px;
+ align-self: flex-start; /* Knop links uitlijnen */
+}
+
+button:hover {
+ background-color: #b5834c;
+}

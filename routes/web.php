@@ -6,7 +6,29 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\ContactController;
 
 
-Route::get('/', [BaseController::class, 'index'])->name('home');
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+
+Route::get('/bases', function () {
+    return view('bases');
+})->name('bases');
+
+Route::get('/search', function () {
+    return view('search');
+})->name('search');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+
 
 
 Route::get('/dashboard', function () {

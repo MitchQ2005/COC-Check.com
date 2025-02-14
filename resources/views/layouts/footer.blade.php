@@ -5,7 +5,7 @@
             <img src="{{ asset('images/COC-logo-v2.png') }}" alt="COC-check logo" style="height: 50px; width: 180px;">
         </a>
         <p class="text-center text-gray-500 text-xs mx-auto">
-            &copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}. All rights reserved.
+            &copy; {{ date('Y') }} COC-check. All rights reserved.
         </p>
         <div class="text-left">
             <p class="text-gray-500 text-xs">Links:</p>

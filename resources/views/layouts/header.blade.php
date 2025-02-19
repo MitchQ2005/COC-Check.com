@@ -13,16 +13,16 @@
                         <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Home</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
-                        <a href="{{ route('bases') }}" class="text-white px-4 py-2 block">Bases</a>
+                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Bases</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
-                        <a href="{{ route('search') }}" class="text-white px-4 py-2 block">Search</a>
+                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Search</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
-                        <a href="{{ route('contact') }}" class="text-white px-4 py-2 block">Contact</a>
+                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Contact</a>
                     </li>
                     <li class="bg-[#DB5A42] rounded-lg border border-white">
-                        <a href="{{ route('login') }}" class="text-white px-4 py-2 block">Login</a>
+                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Login</a>
                     </li>
                 </ul>
             </nav>

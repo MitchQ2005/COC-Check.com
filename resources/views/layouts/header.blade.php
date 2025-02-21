@@ -21,9 +21,34 @@
                     <li class="bg-orange-500 rounded-lg border border-white">
                         <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Contact</a>
                     </li>
-                    <li class="bg-[#DB5A42] rounded-lg border border-white">
-                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Login</a>
-                    </li>
+                    @auth
+                        <li class="relative bg-[#DB5A42] rounded-lg border border-white group">
+                            <a href="#" class="text-white px-4 py-2 block">Account</a>
+                            <ul class="absolute hidden text-gray-700 pt-1 group-hover:block z-50">
+                                <li class="">
+                                    <a href="{{ route('dashboard') }}" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">Dashboard</a>
+                                </li>
+                                <li class="">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="relative bg-[#DB5A42] rounded-lg border border-white group">
+                            <a href="#" class="text-white px-4 py-2 block">Login</a>
+                            <ul class="absolute hidden text-gray-700 pt-1 group-hover:block z-50">
+                                <li class="">
+                                    <a href="{{ route('login') }}" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">Login</a>
+                                </li>
+                                <li class="">
+                                    <a href="{{ route('register') }}" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">Register</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endauth
                 </ul>
             </nav>
         </div>

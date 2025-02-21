@@ -11,6 +11,9 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap">
 
+    <!-- Css -->
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

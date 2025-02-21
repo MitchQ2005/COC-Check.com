@@ -1,0 +1,57 @@
+.player-container {
+    text-align: center;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.player-info {
+    background-color: #f4c76b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.player-header p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.stat-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 250px;
+    margin-bottom: 40px; /* Added margin-bottom for the stat-boxes */
+}
+
+.player-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.chart-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    max-width: 1200px; /* Set a max-width for the chart */
+    margin: 0 auto; /* Center the chart */
+}
+
+.stats-row {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}

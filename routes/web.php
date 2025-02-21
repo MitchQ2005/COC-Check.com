@@ -8,7 +8,7 @@ use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 })->name('home');
 
 
@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+// Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 // Route voor de CRUD vanuit de Base controller
 Route::resource('bases', BaseController::class);
 

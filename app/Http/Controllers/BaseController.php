@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Base;
 use App\Models\TownHall;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BaseController extends Controller
 {
@@ -44,23 +45,27 @@ class BaseController extends Controller
             'town_hall_id' => 'required|exists:town_halls,id',
         ]);
 
-        // Custom validation to ensure the layout_link corresponds to the correct townhall level
-        $townHall = TownHall::find($request->town_hall_id);
-        if (!$townHall) {
-            return redirect()->back()->withErrors(['town_hall_id' => 'Invalid townhall level.']);
+        try {
+            // Custom validation to ensure the layout_link corresponds to the correct townhall level
+            $townHall = TownHall::find($request->town_hall_id);
+            if (!$townHall) {
+                return redirect()->back()->withErrors(['town_hall_id' => 'Invalid townhall level.']);
+            }
+
+            // Extract the Town Hall level from the layout_link
+            preg_match('/TH(\d+)/', $request->layout_link, $matches);
+            $extractedTownHallLevel = isset($matches[1]) ? (int)$matches[1] : null;
+
+            if ($extractedTownHallLevel !== $townHall->level) {
+                return redirect()->back()->withErrors(['layout_link' => 'The layout link does not match the selected Town Hall level.']);
+            }
+
+            Base::create($request->all());
+
+            return redirect()->route('dashboard')->with('success', 'Base created successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard')->with('error', 'Failed to create base. Please try again.');
         }
-
-        // Extract the Town Hall level from the layout_link
-        preg_match('/TH(\d+)/', $request->layout_link, $matches);
-        $extractedTownHallLevel = isset($matches[1]) ? (int)$matches[1] : null;
-
-        if ($extractedTownHallLevel !== $townHall->level) {
-            return redirect()->back()->withErrors(['layout_link' => 'The layout link does not match the selected Town Hall level.']);
-        }
-
-        Base::create($request->all());
-
-        return redirect()->route('bases.index')->with('success', 'Base created successfully.');
     }
 
     // deze methode displayed een basis als je hem aanklikt
@@ -73,7 +78,8 @@ class BaseController extends Controller
     public function edit(Base $base)
     {
         $this->authorize('update', $base);
-        return view('bases.edit', compact('base'));
+        $townHalls = TownHall::all();
+        return view('bases.edit', compact('base', 'townHalls'));
     }
 
     // deze functie zorgt ervoor dat de data van de edit pagina in de DB komt. 
@@ -91,31 +97,39 @@ class BaseController extends Controller
             'town_hall_id' => 'required|exists:town_halls,id',
         ]);
 
-        // Custom validation to ensure the layout_link corresponds to the correct townhall level
-        $townHall = TownHall::find($request->town_hall_id);
-        if (!$townHall) {
-            return redirect()->back()->withErrors(['town_hall_id' => 'Invalid townhall level.']);
+        try {
+            // Custom validation to ensure the layout_link corresponds to the correct townhall level
+            $townHall = TownHall::find($request->town_hall_id);
+            if (!$townHall) {
+                return redirect()->back()->withErrors(['town_hall_id' => 'Invalid townhall level.']);
+            }
+
+            // Extract the Town Hall level from the layout_link
+            preg_match('/TH(\d+)/', $request->layout_link, $matches);
+            $extractedTownHallLevel = isset($matches[1]) ? (int)$matches[1] : null;
+
+            if ($extractedTownHallLevel !== $townHall->level) {
+                return redirect()->back()->withErrors(['layout_link' => 'The layout link does not match the selected Town Hall level.']);
+            }
+
+            $base->update($request->all());
+
+            return redirect()->route('dashboard')->with('success', 'Base updated successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard')->with('error', 'Failed to update base. Please try again.');
         }
-
-        // Extract the Town Hall level from the layout_link
-        preg_match('/TH(\d+)/', $request->layout_link, $matches);
-        $extractedTownHallLevel = isset($matches[1]) ? (int)$matches[1] : null;
-
-        if ($extractedTownHallLevel !== $townHall->level) {
-            return redirect()->back()->withErrors(['layout_link' => 'The layout link does not match the selected Town Hall level.']);
-        }
-
-        $base->update($request->all());
-
-        return redirect()->route('bases.index')->with('success', 'Base updated successfully.');
     }
 
     // deze functie vernietigd de basis 
     public function destroy(Base $base)
     {
         $this->authorize('delete', $base);
-        $base->delete();
 
-        return redirect()->route('bases.index')->with('success', 'Base deleted successfully.');
+        try {
+            $base->delete();
+            return redirect()->route('dashboard')->with('success', 'Base deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('dashboard')->with('error', 'Failed to delete base. Please try again.');
+        }
     }
 }

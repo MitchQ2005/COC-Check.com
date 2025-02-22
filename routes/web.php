@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BaseController;
@@ -11,10 +10,16 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/bases', [BaseController::class, 'index'])->name('bases.index');
 
-Route::get('/bases', function () {
-    return view('bases');
-})->name('bases');
+Route::get('/bases/create', [BaseController::class, 'create'])->middleware('auth')->name('bases.create');
+Route::post('/bases', [BaseController::class, 'store'])->middleware('auth')->name('bases.store');
+Route::get('/bases/{base}', [BaseController::class, 'show'])->name('bases.show');
+
+Route::get('/bases/{base}/edit', [BaseController::class, 'edit'])->middleware('auth')->name('bases.edit');
+Route::patch('/bases/{base}', [BaseController::class, 'update'])->middleware('auth')->name('bases.update');
+
+Route::delete('/bases/{base}', [BaseController::class, 'destroy'])->middleware('auth')->name('bases.destroy');
 
 Route::get('/search', function () {
     return view('search');
@@ -27,9 +32,6 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
-
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

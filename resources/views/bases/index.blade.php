@@ -1,44 +1,54 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Bases') }}
+        </h2>
+    </x-slot>
 
-@section('content')
-    <div class="container">
-        <h1>Bases</h1>
-        @auth
-            <a href="{{ route('bases.create') }}" class="btn btn-primary mb-3">Create Base</a>
-        @endauth
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                {{ $message }}
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                        This page allows you to view and manage all the bases. You can create new bases, view existing ones, and manage them efficiently.
+                    </h2>
+                </div>
             </div>
-        @endif
-        <ul class="list-group">
-            @foreach ($bases as $base)
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{ route('bases.show', $base->id) }}">{{ $base->name }}</a>
-                    <a href="{{ route('bases.show', $base->id) }}">{{ $base->image_url }}</a>
-                    <a href="{{ route('bases.show', $base->id) }}">{{ $base->description }}</a>
+            @auth
+            <div class="mt-6 flex justify-between items-center">
 
-                    @auth
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{ route('bases.edit', $base->id) }}" class="btn btn-secondary btn-sm">Edit</a>
-                            <form action="{{ route('bases.destroy', $base->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </div>
-                    @endauth
-                </li>
-            @endforeach
-        </ul>
-        @guest
-            <div class="mt-4">
-                <a href="{{ route('login') }}" class="btn btn-primary">Log in</a>
+                <div class="flex items-center">
+                    <a href="{{ route('bases.create') }}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Create Base</a>
+                </div>
 
-                @auth
-                <a href="{{ route('create') }}" class="btn btn-primary">create</a>
-                @endauth
+                <div class="flex-1 ml-4">
+                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">Click on Create base to create a base for everyone to see! You can also create a base from the dashboard.</h2>
+                </div>
             </div>
-        @endguest
+            @endauth
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+                @foreach ($townHalls as $townHall)
+                <div class="bg-white shadow rounded overflow-hidden">
+                    <div class="bg-gray-100 p-4">
+                        <h2 class="text-xl font-semibold text-center">Town Hall Level {{ $townHall->level }}</h2>
+                    </div>
+                    <div class="p-4">
+                        <ul>
+                            @foreach ($townHall->bases as $base)
+                            <li class="flex flex-col items-center py-2 border-b">
+                                <img src="{{ $base->image_url }}" alt="{{ $base->name }}" class="w-40 h-40 object-cover rounded mb-2">
+                                <div class="text-center">
+                                    <a href="{{ route('bases.show', $base->id) }}" class="text-blue-500 hover:underline font-semibold">{{ $base->name }}</a>
+                                    <p class="text-gray-600">{{ $base->description }}</p>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
     </div>
-@endsection
+</x-app-layout>

@@ -13,7 +13,7 @@
                         <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Home</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
-                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Bases</a>
+                        <a href="{{ route('bases.index') }}" class="text-white px-4 py-2 block">Bases</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
                         <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Search</a>

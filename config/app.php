@@ -185,4 +185,8 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+
+    'coc_api_url' => env('COC_API_URL', 'https://api.clashofclans.com/v1'),
+    'coc_api_key' => env('COC_API_KEY', ''),
+
 ];

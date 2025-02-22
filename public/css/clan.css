@@ -1,0 +1,82 @@
+.clan-container {
+    text-align: center;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.clan-info {
+    background-color: #f4c76b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clan-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.clan-header p {
+    font-size: 18px;
+    margin: 5px 0;
+    flex: 1;
+    text-align: left;
+}
+
+.clan-header img {
+    max-width: 100px;
+    border-radius: 10px;
+}
+
+.stat-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 250px;
+    margin-bottom: 20px; /* Added margin-bottom for the stat-boxes */
+}
+
+.clan-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.memberstable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 40px !important;
+}
+
+.memberstable th, .memberstable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.memberstable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.memberstable tr:hover {
+    background-color: #ddd;
+}
+
+.memberstable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}

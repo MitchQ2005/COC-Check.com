@@ -77,7 +77,7 @@ class BaseController extends Controller
 
             return redirect()->route('dashboard')->with('success', 'Base created successfully.');
         } catch (\Exception $e) {
-            abort(500, 'Failed to create base. Please try again.');
+            return redirect()->back()->withErrors(['error' => 'Failed to create base. Please try again.']);
         }
     }
 

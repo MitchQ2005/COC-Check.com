@@ -25,7 +25,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg relative h-72">
                     <div class="absolute inset-0 bg-cover bg-center opacity-75" style="background-image: url('{{ asset('images/coc-check bases-2.png') }}')"></div>
                     <div class="relative p-6 text-gray-900 flex items-center justify-center h-full">
-                        <a href="{{ route('bases.index') }}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">My Bases</a>
+                        <a href="{{ route('bases.my-bases') }}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">My Bases</a>
                     </div>
                 </div>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg relative h-72">

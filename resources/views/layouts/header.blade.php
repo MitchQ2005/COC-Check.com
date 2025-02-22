@@ -16,10 +16,10 @@
                         <a href="{{ route('bases.index') }}" class="text-white px-4 py-2 block">Bases</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
-                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Search</a>
+                        <a href="{{ route('search.index') }}" class="text-white px-4 py-2 block">Search</a>
                     </li>
                     <li class="bg-orange-500 rounded-lg border border-white">
-                        <a href="{{ route('home') }}" class="text-white px-4 py-2 block">Contact</a>
+                        <a href="{{ route('contact.create') }}" class="text-white px-4 py-2 block">Contact</a>
                     </li>
                     @auth
                         <li class="relative bg-[#DB5A42] rounded-lg border border-white group">

@@ -1,7 +1,6 @@
-<!-- filepath: /c:/xampp/htdocs/coc-check/COC-Check.com/resources/views/welcome.blade.php -->
 <x-app-layout>
-<!-- Hero Section -->
-<div class="relative bg-cover bg-center h-[60vh]" style="background-image: url('{{ asset('images/COC-herobanner-home.jpg') }}');">
+    <!-- Hero Section -->
+    <div class="relative bg-cover bg-center h-[60vh]" style="background-image: url('{{ asset('images/COC-herobanner-home.jpg') }}');">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative flex items-center justify-center h-full">
             <h1 class="text-white text-4xl md:text-6xl font-bold">Welcome to COC-Check</h1>
@@ -12,15 +11,16 @@
     <div class="py-10 px-6 md:px-16">
         <div class="flex flex-col md:flex-row items-center justify-between gap-10">
             <div class="w-full md:w-1/2">
-                <img src="/images/search-banner.jpg" alt="Search Banner" class="w-full h-auto rounded shadow">
+                <img src="/images/COC_searchbanner.jpg" alt="Search Banner" class="w-full h-auto rounded shadow">
             </div>
             <div class="w-full md:w-1/2 text-center md:text-left">
-                <h2 class="text-2xl font-bold mb-4">Here you can search a player or clan</h2>
-                <form action="/search" method="GET">
+                <h2 class="text-2xl font-bold mb-4">Here you can search a player</h2>
+                <form action="{{ route('search.player') }}" method="POST">
+                    @csrf
                     <input 
                         type="text" 
-                        name="query" 
-                        placeholder="Fill in a user ID or name" 
+                        name="tag" 
+                        placeholder="Fill in a player ID or name" 
                         class="w-full border border-gray-300 rounded px-4 py-2 focus:ring focus:outline-none"
                     >
                     <button 
@@ -68,7 +68,7 @@
         <h2 class="text-center text-3xl font-bold mb-8">About Us</h2>
         <div class="flex flex-col md:flex-row items-center justify-between gap-10">
             <div class="w-full md:w-1/2">
-                <img src="{{ asset('images/aboutus-image.jpg') }}" alt="About Us" class="w-full h-auto rounded shadow">
+                <img src="{{ asset('images/COC_aboutus.jpg') }}" alt="About Us" class="w-full h-auto rounded shadow">
             </div>
             <div class="w-full md:w-1/2">
                 <p class="text-gray-700 leading-relaxed">

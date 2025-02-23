@@ -25,7 +25,8 @@ class SearchController extends Controller
     {
         Log::info('SearchController@searchPlayer called');
         $playerTag = $request->input('tag');
-        return redirect()->route('player.show', ['tag' => $playerTag]);
+        $cleanTag = str_replace('#', '', $playerTag); // Verwijder het # symbool
+        return redirect()->route('player.show', ['tag' => $cleanTag]);
     }
 
     public function searchClan(Request $request)
